@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Leckerli+One&family=Marck+Script&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+/*======Global======*/
+h1{
+    font-size: 6.5 vw;
+}
+h3{
+    font-family:'Merriweather', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+h4{
+    font-size: 1.1rem;
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    word-spacing: 0.4vw;
+}
+h6{
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #6CAA7F;
+}
+p{
+    font-size: 1rem;
+    font-family: 'Karla', sans-serif;
+    line-height: 1.5rem;
+}
+button{
+    background: #6CAA7F;
+    border-style: none;
+    padding: 0.7rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+   
+
+}
+hr{
+    background: #0ad65f;
+    color: #2bbf69;
+    height: 0.09rem;
+}
+/*=======BODY======*/
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+.custom-navbar {  
+    background-color: #ff5733; /* Replace with your desired color */  
+} 
+header .intro{
+ position: relative;
+}
+header .intro .head {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+header .intro .head h1{
+    font-family: "Leckerli One", cursive;
+}
+.subscribe{
+    background: #575555;
+}
+.subscription {
+    padding: 80px 0;
+    
+}
+.newsletter_box {
+       padding:20px 50px 50px 50px;
+       border-radius: 10px;
+       background: linear-gradient(to right,#27ae60,#6CAA7F);
+}
+.newsletter_box span{
+    font-size: 14px;
+    color: #ffffff;
+    margin:30px 0 10px 0;
+    display: block;
+
+}
+.newsletter_box p {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 10px;
+    color: #ffffff;
+}
+.subscribe_form {
+    width: 100%;
+    height: 60px;
+    position:relative;
+    background: #ffffff;
+    margin-top: 30px;
+}
+.subscribe_form input {
+    position:absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: transparent;
+    padding-left: 20px;
+}
+
+.subscribe_form button {
+    width: 150px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #FFD700;
+    color: #ffffff;
+    border: transparent;
+    font-size: 14px;
+    transition: .3s;
+}
+.subscribe_form button:hover {
+    background: #A39F00;
+
+}
+.blog .row .post a {
+    font-size: 0.9rem;
+    color: #27ae60;
+    font-weight: bold;
+    text-decoration: none;
+    border-style: none;
+}
+
+
+.contact {
+    background:url(./assets/healthy-food-dark-wooden-background_249006-2174.avif) no-repeat center center fixed;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100vh;
+}
+.head1 {
+    background-color: #2bbf69;
+    border-radius: 5px;
+    margin-top: -40px;
+    -webkit-box-shadow: -9px 14px 17px -7px rgba(69,179,119,0.78);
+-moz-box-shadow: -9px 14px 17px -7px rgba(69,179,119,0.78);
+box-shadow: -9px 14px 17px -7px rgba(69,179,119,0.78);
+}
+.effect-1{
+    border: 0;
+    outline: none;
+    width: 100%;
+    padding: 7px 0;
+    border-bottom: 1px solid #ccc;
+}
+.effect-1 ~ .Focus-border {
+    position:absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: rgba(69,179,119,0.78);
+    transition: 0.4s;
+}
+.effect-1:focus ~ .Focus-border {
+    width:100% ;
+    transition: 0.4s;
+    left: 0;
+
+}
+.btn1{
+    background: #2bbf69;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    width: 145px;
+}
+.btn1:hover {
+    -webkit-box-shadow: -9px 14px 17px -7px rgba(69,179,119,0.78);
+-moz-box-shadow: -9px 14px 17px -7px rgba(69,179,119,0.78);
+box-shadow: -9px 14px 17px -7px rgba(69,179,119,0.78);
+}
+
+footer{
+    background:#27ae60;
+    padding-top: 50px;
+}
+footer .container {
+    width: 1140px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.footer-content{
+    width: 33.3%;
+}
+.footer-content h3 {
+    font-size:28px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.footer-content p{
+    width: 190px;
+    margin: auto;
+    padding: 7px;
+}
+.footer-content ul {
+    text-align: center;
+}
+.list{
+    padding: 0;
+}
+.list li{
+    width: auto;
+    color: #575555;
+    text-align: center;
+    list-style: none;
+    padding: 7px;
+    position: relative;
+}
+.list li::before{
+    content: '';
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 100%;
+    width: 0;
+    height: 2px;
+    background: #304137;
+    transition-duration: .5s;
+
+}
+.list li:hover::before {
+    width: 70px;
+}
+.social-icons{
+    text-align:center;
+    padding: 0;
+}
+.social-icons li{
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+
+}
+.social-icons i{
+    color: white;
+    font-size: 25px;
+}
+ a{
+    text-decoration: none;
+    color: #131815;
+
+}
+ a:hover{
+    color: #FFD700;
+}
+.bottom-bar{
+    background: #427658;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 50px;
+}
+.bottom-bar p{
+    color: #000000;
+    margin: 0;
+    font-size: 16px;
+    padding: 7px;
+
+}

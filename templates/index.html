@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block content %}
+
+{% include 'navbar.html'%}
+<header>
+  
+  {% for message in messages %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endfor %}
+
+      <div class="intro">
+        <img  class="img-fluid w-100 " src="{% static 'assets/hero.jpg' %}" alt="food">
+        <div class="head text-center">
+            <h1>Food Blog</h1>
+            <h6>Wellness Advocate</h6>
+            <p>A serene space for those who value nourishing their bodies with vibrant food.</p>
+            <hr class="w-25 mx-auto">
+        </div>
+     </div>
+     
+    </header>
+    <div>
+    </div>
+  
+   <section >
+    <div class="subscription">
+      <div class="container">
+         <div class="newsletter_box">
+          <div class="row align-items-center">
+            <div class="col-lg-5">
+              <span>Want to get weekly tips & tricks?</span>
+              <p>Sign up and recieve your first email immediately</p>
+            </div>
+            <div class="col-lg-7">
+             
+              <form action="#contact" method="">
+                <div class="subscribe_form">
+                  <input type="email" name="subscription" value="{{user.email}} " readonly>
+                <button {% if not user.is_authenticated %}disabled {% endif %} > Subscribe </button>  
+                </div>
+              </form>
+
+            </div>
+          </div>
+         </div>
+      </div>
+    </div>
+  </section>
+
+
+<section id="about" class="about container my-5 py-5 text-center" style="background-color: #f8f9fa;">
+    <h2 class="display-4 mb-4" style="font-weight: 600; color: #343a40;">About Us</h2>
+    <p class="lead text-muted mb-5">We are dedicated to providing insightful articles on healthy eating, delicious recipes, and mindful living.</p>
+</section>
+
+  <section class="contact" id="contact">
+    <div class="container py-5" align-center>
+      <div class="row">
+        <div class="col-lg-6 mx-auto">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="head1 text-center text-white py-3 ">
+                    <h3>Contact Us</h3>
+                  </div>
+                </div>
+              </div>
+              <form class="form p-3" action="{% url 'contact' %}" method="post" > 
+                {% csrf_token %}
+                <div class="form-row my-5 pb-5">
+                  <div class="col-lg-6">
+                    <input type="text" class="effect-1" placeholder="First Name" name="firstName" required>
+                    <span class="Focus-border "></span>
+                  </div>
+                  <div class="col-lg-6">
+                    <input type="text" class="effect-1" placeholder="Last Name" name="lastName" required>
+                    <span class="Focus-border "></span>
+                  </div>
+                </div>
+                <div class="form-row pb-4">
+                  <div class="col-lg-12">
+                    <input type="email" class="effect-1" placeholder="Email Address" name="email" value="{{user.email}}" required>
+                    <span class="Focus-border "></span>
+                  </div>
+                </div>
+                <div class="form-row pt-5">
+                  <div class="col-lg-12">
+                    <input type="text" class="effect-1" placeholder=" Your Message" name="message" required>
+                    <span class="Focus-border "></span>
+                  </div>
+                </div>
+                <div class="form-row pt-4">
+                  <div class="col-lg-6">
+                    <p> <input type="checkbox" required>I'm Not A Robot</p>
+                  </div>
+            
+                 <div class="offset-2 col-lg-4">
+                <button type="submit" class="btn1 align-items-center" 
+                  {% if not user.is_authenticated %} disabled {% endif %}> Send Message
+                   </button>
+
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>   
+  </section>
+
+
+  <section>  
+    <footer class=" text-white pt-4 ">  
+      <div class="d-flex justify-content-evenly">  
+        <div class="row">  
+          
+          <div class="col-md-4 mb-3">  
+            <h3>Contact Us</h3>  
+            <p>Email: <a href="mailto:BLOG_info@gmail.com" class="text-white">BLOG_info@gmail.com</a></p>  
+            <p>Phone: +977 9800000099</p>  
+            <p>Address: Bharatpur, Chitwan</p>  
+          </div>    
+
+          <div class="col-md-4 mb-3">  
+            <h3>Quick Links</h3>  
+            <ul class="list-unstyled">  
+              <li><a class="text-decoration-none text-white" href="{% url 'index' %}">Home</a></li>  
+              <li><a class="text-decoration-none text-white" href="{% url 'blog' %}">Blog</a></li>  
+              <li><a class="text-decoration-none text-white" href="#contact">Contact</a></li>  
+            </ul>  
+          </div>  
+
+            <div class="col-md-4 mb-3">  
+            <h3>Follow Us</h3>  
+            <ul class="list-unstyled d-flex">  
+              <li class="me-3"><a href="https://www.facebook.com" target="_blank" class="text-white"><i class="fab fa-facebook fa-lg"></i></a></li>  
+              <li class="me-3"><a href="https://www.twitter.com" target="_blank" class="text-white"><i class="fab fa-twitter fa-lg"></i></a></li>  
+              <li class="me-3"><a href="https://www.instagram.com" target="_blank" class="text-white"><i class="fab fa-instagram fa-lg"></i></a></li>  
+              <li><a href="https://www.linkedin.com" target="_blank" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a></li>  
+            </ul>  
+          </div>  
+        </div>  
+      </div> 
+       
+        <div class="text-center mt-4">  
+          <p>&copy; 2025 Nutripedia. All rights reserved</p>  
+        </div>  
+      </div>
+    </footer>  
+  </section>  
+  
+    {% endblock %}

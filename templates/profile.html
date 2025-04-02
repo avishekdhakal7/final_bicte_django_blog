@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %} 
+
+{% block content %}
+{% include 'navbar.html'%}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body text-center">
+          {% if user.profile.profile_picture %}
+            <img src="{{ user.profile.profile_picture.url }}" class="rounded-circle" alt="Profile Picture" width="150" height="150">
+          {% else %}
+            <img src="https://www.bootdey.com/img/Content/avatar/avatar7.png" class="rounded-circle" alt="Default Profile Picture" width="150" height="150">
+          {% endif %}
+          <h5 class="card-title mt-3">{{ user.username|upper }}</h5>
+          <p class="card-text">
+            {% comment %} {% if user.bio %}
+              {{ user.bio }}
+            {% else %}
+              This user has not set up their bio yet. 
+            {% endif %} {% endcomment %}
+          </p>
+          {% comment %} <a href="" class="btn btn-primary">Edit Profile</a>  {% endcomment %}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header" style="font-size: 1.5em; background-color: #f0f0f5; border-bottom: none;">
+          About
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Email:</strong> {{ user.email }} </li>
+            <li class="list-group-item"><strong>Joined:</strong> {{ user.date_joined }}</li>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <div class="card">
+        <div class="card-header" style="font-size: 1.5em; background-color: #f0f0f5; border-bottom: none;">
+          Activity
+        </div>
+
+        <div class="card-body">
+
+          {% for pendingpost in pendingposts%}
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="{% url 'pendingpost' %}"class= "text-decoration-none" style="font-weight: bold;">
+                    {{ pendingpost.title }} || <h5 class='text-danger'>Status:Pending</h5>
+                  </a>
+                </h5>
+                <p class="card-text"><small class="text-muted">{{ pendingpost.date }}</small></p>
+                <p class="card-text">{{ pendingpost.content|truncatewords:15 }}</p>
+                <a href="{% url 'pendingpost' %}" class="btn btn-primary">View</a>
+              </div>
+            </div>
+          {% endfor %}
+
+          {% for approvedpost in approvedposts%}
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="{% url 'readmore' approvedpost.id %}" class= "text-decoration-none" style="font-weight: bold;">
+                    {{ approvedpost.title }} ||  <h5 class='text-success'>Status:Approved</h5>
+                  </a>
+                </h5>
+                <p class="card-text"><small class="text-muted">{{ approvedpost.date }}</small></p>
+                <p class="card-text">{{ approvedpost.content|truncatewords:15 }}</p>
+                <a href="{% url 'readmore' approvedpost.id %}" class="btn btn-primary">Read More</a>
+              </div>
+            </div>
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}

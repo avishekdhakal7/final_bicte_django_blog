@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %} 
+
+{% block content %}
+{% include 'navbar.html' %} 
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2"> 
+     <article class="blog-post mt-5 p-4 bg-white rounded shadow-sm">
+  <h1 class="display-4">{{ approvedpost.title }}</h1>
+  <p class="lead">Posted on {{ approvedpost.date }} by {{ approvedpost.postby}}</p>
+
+  <img src="{{ approvedpost.image.url }}" class="img-fluid rounded" alt="{{ approvedpost.title }}">
+
+  <p class="mt-4">{{ approvedpost.description }}</p>
+
+   
+  <div class="dropdown d-inline-block float-end">
+    <button class="btn btn-sm btn-link dropdown-toggle" type="button" id="postActionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-three-dots-vertical"></i>
+    </button>
+
+   {% if approvedpost.postby == user.username or user.is_superuser %}
+<ul class="dropdown-menu" aria-labelledby="postActionsDropdown">
+  <li><a class="dropdown-item" href="{% url 'edit' approvedpost.id %}"
+     onclick="return confirm('Are you sure you want to edit this post?');">Edit</a></li>
+  <li><a class="dropdown-item" href="{% url 'delete' approvedpost.id %}"
+     onclick="return confirm('Are you sure you want to delete this post?');">Delete</a></li>
+</ul>
+{% endif %} 
+
+  </div>
+</article>
+
+      {% comment %} <section class="comments-section mt-5">
+        <h2 class="mb-4">Comments</h2>
+
+        <div class="comments">
+          {% for comment in comments %}
+          <div class="comment border rounded p-3 mb-3">
+            <div class="comment-header d-flex justify-content-between align-items-center">
+              <span class="comment-author font-weight-bold">{{ comment.author.username }}</span>
+              <span class="comment-date text-muted">{{ comment.created_at }}</span>
+            </div>
+            <div class="comment-body mt-2">
+              <p>{{ comment.content }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div> 
+
+        <h3 class="mb-3">Leave a Comment</h3>
+        <form class="comment-form" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <textarea name="content" class="form-control" placeholder="Enter your comment here..." rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Post Comment</button>
+        </form>
+      </section>  {% endcomment %}
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
